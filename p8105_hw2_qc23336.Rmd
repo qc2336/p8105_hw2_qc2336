@@ -5,12 +5,14 @@ date: "2023-09-26"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 ##Problem 1
 ```{r cars}
-summary(cars)
+pol_month = read_csv(file = "./data/pols-month.csv")
+
+pol_month
 ```
 
 ## Including Plots
