@@ -10,10 +10,23 @@ library(tidyverse)
 
 ##Problem 1
 ```{r cars}
-pol_month = read_csv(file = "./data/pols-month.csv")
-
+pol_month = read_csv(file = "./data/pols-month.csv")|>
+  janitor::clean_names()|>
+  separate(mon, into = c("year", "month","day")) |>
+  mutate(year=as.integer(year),
+  month=month.name[as.integer(month)],
+  day=as.integer(day))|>
+  mutate(president=recode(prez_dem, `1`="dem",`0`="gop"))|>
+  select(-prez_dem,-prez_gop, -day)
+  
 pol_month
 ```
+
+
+```{r}
+
+```
+
 
 ## Including Plots
 
