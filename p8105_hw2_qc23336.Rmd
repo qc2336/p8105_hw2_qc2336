@@ -37,6 +37,7 @@ snp = read_csv(file = "./data/snp.csv")|>
 snp
 
 ```
+
 ```{r}
 unemployment=read_csv(file = "./data/unemployment.csv")|>
   pivot_longer(Jan:Dec,
@@ -47,25 +48,34 @@ unemployment=read_csv(file = "./data/unemployment.csv")|>
 unemployment
   
 ```
+
 ```{r}
 pol_snp=left_join(pol_month,snp,by=c("year","month"))
 
-pol_snp
-
-```
-```{r}
-pol_snp_unemp=left_join(pol_snp,unemployment,by="year","month")
+pol_snp_unemp=left_join(pol_snp,unemployment,by=c("year","month"))
 
 pol_snp_unemp
 ```
 
+>> The pol_month dtata set contains the number of republican and democrates in senate, governor and presidential positions in 1947-2015, it has 822 observations and 9 variables including whether the president is dem or rep on the date. The snp data shows the closing value of stock in 1950-2015, it has 787 observatins and 10 variables, the most important variable is the closing value. And the umemployment data shows the unempolyment rate in 1948-2015, the variable per_unemploy shows the unemploymet percentage of each date. The pol_snp_unemp data frame has 822 observation of 11 variables with the variables in the aforementioned dataframes combined from year 1947-2015.
 
-## Including Plots
+## Problem 2
 
-You can also embed plots, for example:
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+Mr_trashwheel = readxl::read_excel("./data/202207 Trash Wheel Collection Data.xlsx", sheet="Mr. Trash Wheel",range = "A2:N550")|>
+  janitor::clean_names() |>
+  mutate(homes_powered=(as.numeric(weight_tons)*500/30))|>
+  drop_na(dumpster)
+  
+Mr_trashwheel
+
+Pr_trashwheel = readxl::read_excel("./data/202207 Trash Wheel Collection Data.xlsx", sheet="Professor Trash Wheel" ,range ="A2:M97")|>
+  janitor::clean_names() |>
+  drop_na(dumpster)
+
+```
+```{r}
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
