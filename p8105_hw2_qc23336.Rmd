@@ -40,7 +40,7 @@ snp
 ```{r}
 unemployment=read_csv(file = "./data/unemployment.csv")|>
   pivot_longer(Jan:Dec,
-               names_to = 'Month',
+               names_to = 'month',
                values_to = 'per_unemploy')|>
   rename(year=Year)
 
@@ -54,7 +54,9 @@ pol_snp
 
 ```
 ```{r}
+pol_snp_unemp=left_join(pol_snp,unemployment,by="year","month")
 
+pol_snp_unemp
 ```
 
 
