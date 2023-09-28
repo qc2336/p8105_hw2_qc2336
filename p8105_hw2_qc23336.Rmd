@@ -8,13 +8,13 @@ date: "2023-09-26"
 library(tidyverse)
 ```
 
-##Problem 1
+## Problem 1
 ```{r cars}
 pol_month = read_csv(file = "./data/pols-month.csv")|>
   janitor::clean_names()|>
-  separate(mon, into = c("year", "month","day")) |>
+  separate(mon, into = c("year", "month","day"), convert = TRUE) |>
   mutate(year=as.integer(year),
-  month=month.name[as.integer(month)],
+  month=month.abb[as.numeric(month)],
   day=as.integer(day))|>
   mutate(president=recode(prez_dem, `1`="dem",`0`="gop"))|>
   select(-prez_dem,-prez_gop, -day)
@@ -23,6 +23,36 @@ pol_month
 ```
 
 
+```{r}
+snp = read_csv(file = "./data/snp.csv")|>
+  janitor::clean_names()|>
+  separate(date,into = c("month","day","year"),convert=TRUE)|>
+  mutate(month=month.abb[as.integer(month)],
+         year=as.numeric(year),
+        year=ifelse(year<=20,year+2000,year+1900))|>
+  arrange(year,month)|>
+  select(year,month,close,-c("day"))
+  
+
+snp
+
+```
+```{r}
+unemployment=read_csv(file = "./data/unemployment.csv")|>
+  pivot_longer(Jan:Dec,
+               names_to = 'Month',
+               values_to = 'per_unemploy')|>
+  rename(year=Year)
+
+unemployment
+  
+```
+```{r}
+pol_snp=left_join(pol_month,snp,by=c("year","month"))
+
+pol_snp
+
+```
 ```{r}
 
 ```
