@@ -1,6 +1,7 @@
 ---
+author: Qiran Chen
 title: "p8105_hw2_qc2336"
-output: html_document
+output: git_document
 date: "2023-09-26"
 ---
 
@@ -149,7 +150,7 @@ amyloid
 ```{r}
 base_amyloid<-left_join(baseline,amyloid,by="id")
 
-write.csv(base_amyloid, "./data/base_amyloid.csv", row.names=FALSE)
+write_csv(base_amyloid, 'base_amyloid.csv')
 
 base_amyloid
 ```
