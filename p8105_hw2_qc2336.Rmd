@@ -99,7 +99,7 @@ trash_tidy =
 trash_tidy
 
 ```
->> The three data has the relative similar variables, the key variables are the weight tons of the trash collected and the homes powers. The Mr. Trashwheel data set has 547 observation and 15 variable, Gwynnda has 12 variable and 106 observations, Pr_trashwheel has 94 observations and 14 variables. The difference is on the kind of trash collected, variables such as plastic bags are not measured in the other datasets. The total trash collected by pf_trashwheel is 190.12 and total for gwynnda is =310.78
+>> The three data has the relative similar variables, the key variables are the weight tons of the trash collected and the homes powers. The Mr. Trashwheel data set has 547 observation and 15 variable, Gwynnda has 12 variable and 106 observations, Pr_trashwheel has 94 observations and 14 variables. The difference is on the kind of trash collected, variables such as plastic bags are not measured in the other datasets. The total trash collected by pf_trashwheel is 190.12 and total for gwynnda is 310.78
 
 ```{r}
 sum(Pf_trashwheel$weight_tons)
@@ -118,7 +118,7 @@ baseline = read_csv(file = "./data/data_mci/MCI_baseline.csv", skip=1)|>
 
 baseline
 ```
->> In this data set, the important steps are to change the binary data into chracters. And change the age of onset into numeric data so it can drop the missing value.
+>> In this data set, the important steps are to change the binary data sex and apoe 4 into chracters. And change the age of onset into numeric data so it can drop the missing value.
 
 ```{r}
 summary(baseline)
@@ -126,8 +126,9 @@ summary(baseline)
 baseline|>
   count(sex, apoe4)
 
+30/46
 ```
->> 483 people are recruited but only 97 developed mci. The mean baseline age is 70.26.`30/46`of the women are APOE4 carriers. 
+>> 483 people are recruited but only 97 developed mci. The mean baseline age is 70.26. 65.22% of the women are APOE4 carriers. 
 
 
 How many participants were recruited, and of these how many develop MCI? What is the average baseline age? What proportion of women in the study are APOE4 carriers?

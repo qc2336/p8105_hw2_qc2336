@@ -577,7 +577,7 @@ Mr. Trashwheel data set has 547 observation and 15 variable, Gwynnda has
 14 variables. The difference is on the kind of trash collected,
 variables such as plastic bags are not measured in the other datasets.
 The total trash collected by pf_trashwheel is 190.12 and total for
-gwynnda is =310.78</p>
+gwynnda is 310.78</p>
 </blockquote>
 </blockquote>
 <pre class="r"><code>sum(Pf_trashwheel$weight_tons)</code></pre>
@@ -623,8 +623,8 @@ gwynnda is =310.78</p>
 <blockquote>
 <blockquote>
 <p>In this data set, the important steps are to change the binary data
-into chracters. And change the age of onset into numeric data so it can
-drop the missing value.</p>
+sex and apoe 4 into chracters. And change the age of onset into numeric
+data so it can drop the missing value.</p>
 </blockquote>
 </blockquote>
 <pre class="r"><code>summary(baseline)</code></pre>
@@ -651,10 +651,12 @@ drop the missing value.</p>
 ## 2 Female Carrier        30
 ## 3 Male   Non-carrier    20
 ## 4 Male   Carrier        31</code></pre>
+<pre class="r"><code>30/46</code></pre>
+<pre><code>## [1] 0.6521739</code></pre>
 <blockquote>
 <blockquote>
 <p>483 people are recruited but only 97 developed mci. The mean baseline
-age is 70.26.<code>30/46</code>of the women are APOE4 carriers.</p>
+age is 70.26. 65.22% of the women are APOE4 carriers.</p>
 </blockquote>
 </blockquote>
 <p>How many participants were recruited, and of these how many develop
