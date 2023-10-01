@@ -118,7 +118,7 @@ baseline = read_csv(file = "./data/data_mci/MCI_baseline.csv", skip=1)|>
 
 baseline
 ```
->> In this data set, the important steps are to change the binary data sex and apoe 4 into chracters. And change the age of onset into numeric data so it can drop the missing value.
+>> The data set has six variabled. Current age, age at onset, sex, apoe4 gene, and id. In this data set, the important steps are to change the binary data sex and apoe 4 into chracters. And change the age of onset into numeric data so it can drop the missing value.
 
 ```{r}
 summary(baseline)
@@ -130,5 +130,27 @@ baseline|>
 ```
 >> 483 people are recruited but only 97 developed mci. The mean baseline age is 70.26. 65.22% of the women are APOE4 carriers. 
 
+```{r}
+amyloid = read_csv(file = "./data/data_mci/mci_amyloid.csv",skip=1)|>
+  janitor::clean_names()|>
+  mutate(baseline=as.numeric(baseline),
+         time_2=as.numeric(time_2),
+         time_4=as.numeric(time_4),
+         time_6=as.numeric(time_6),
+         time_8=as.numeric(time_8))|>
+  rename(id=study_id)
 
-How many participants were recruited, and of these how many develop MCI? What is the average baseline age? What proportion of women in the study are APOE4 carriers?
+
+amyloid
+```
+
+>> This data has six variable, id, baseline, time2,4,6,8. It's mostly numerical but it shows it is character in data set. During the tidying this is changed by using mutate. The study id is renamed as id so it is easier for the table to merge.
+
+```{r}
+base_amyloid<-left_join(baseline,amyloid,by="id")
+
+write.csv(base_amyloid, "base_amyloid.csv", row.names=FALSE)
+
+base_amyloid
+```
+>> Some participants are removed in the baseline dataset becomes they never developed mci. When left joined the dataset has 97 observation of subjects that developed mci during the study and their longtitudinal data combined with data in baseline. It has 11 variables.
