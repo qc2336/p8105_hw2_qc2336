@@ -154,4 +154,4 @@ write_csv(base_amyloid, 'base_amyloid.csv')
 
 base_amyloid
 ```
->> Some participants are removed in the baseline dataset becomes they never developed mci. When left joined the dataset has 97 observation of subjects that developed mci during the study and their longtitudinal data combined with data in baseline. It has 11 variables.
+>> Some participants are removed in the baseline dataset becomes they never developed mci. When left joined the dataset has 97 observation of subjects that developed mci during the study and their longtitudinal data combined with data in baseline. It has 11 variables that is show in the two table.
