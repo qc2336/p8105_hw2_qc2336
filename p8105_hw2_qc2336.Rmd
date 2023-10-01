@@ -107,4 +107,27 @@ sum(Gwynnda$weight_tons)
 ```
 
 ## Problem 3
+```{r}
+baseline = read_csv(file = "./data/data_mci/MCI_baseline.csv", skip=1)|>
+  janitor::clean_names()|>
+  mutate(sex=factor(sex,levels=c(0,1),labels=c("Female","Male")),
+         apoe4=factor(apoe4,levels=c(0,1),labels=c("Non-carrier","Carrier")),
+         age_at_onset=as.numeric(age_at_onset))|>
+  drop_na(age_at_onset)
+  
 
+baseline
+```
+>> In this data set, the important steps are to change the binary data into chracters. And change the age of onset into numeric data so it can drop the missing value.
+
+```{r}
+summary(baseline)
+
+baseline|>
+  count(sex, apoe4)
+
+```
+>> 483 people are recruited but only 97 developed mci. The mean baseline age is 70.26.`30/46`of the women are APOE4 carriers. 
+
+
+How many participants were recruited, and of these how many develop MCI? What is the average baseline age? What proportion of women in the study are APOE4 carriers?
