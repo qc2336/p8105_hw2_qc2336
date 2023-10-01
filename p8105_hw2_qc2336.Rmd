@@ -149,7 +149,7 @@ amyloid
 ```{r}
 base_amyloid<-left_join(baseline,amyloid,by="id")
 
-write.csv(base_amyloid, "base_amyloid.csv", row.names=FALSE)
+write.csv(base_amyloid, "./data/base_amyloid.csv", row.names=FALSE)
 
 base_amyloid
 ```
