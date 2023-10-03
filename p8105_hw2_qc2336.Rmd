@@ -100,12 +100,8 @@ trash_tidy =
 trash_tidy
 
 ```
->> The three data has the relative similar variables, the key variables are the weight tons of the trash collected and the homes powers. The Mr. Trashwheel data set has 547 observation and 15 variable, Gwynnda has 12 variable and 106 observations, Pr_trashwheel has 94 observations and 14 variables. The difference is on the kind of trash collected, variables such as plastic bags are not measured in the other datasets. The total trash collected by pf_trashwheel is 190.12 and total for gwynnda is 310.78
+>> The three data has the relative similar variables, the key variables are the weight tons of the trash collected and the homes powers. The Mr. Trashwheel data set has 547 observation and 15 variable, Gwynnda has 12 variable and 106 observations, Pr_trashwheel has 94 observations and 14 variables. The difference is on the kind of trash collected, variables such as plastic bags are not measured in the other datasets. The total trash collected by pf_trashwheel is `r sum(Pf_trashwheel$weight_tons)` and total for gwynnda is `r sum(Gwynnda$weight_tons)`
 
-```{r}
-sum(Pf_trashwheel$weight_tons)
-sum(Gwynnda$weight_tons)
-```
 
 ## Problem 3
 ```{r}
@@ -125,7 +121,9 @@ baseline
 baseline|>
   count(sex, apoe4)
 ```
->> 483 people are recruited but only `count(baseline)` developed mci. The mean baseline age is 70.26. `30/40` of the women are APOE4 carriers. 
+>> 483 people are recruited but only `r count(baseline) ` developed mci. The mean baseline age is `r mean(baseline$current_age)` . `r 30/40` of the women are APOE4 carriers. 
+
+
 
 ```{r}
 amyloid = read_csv(file = "./data/data_mci/mci_amyloid.csv",skip=1)|>
@@ -141,7 +139,7 @@ amyloid = read_csv(file = "./data/data_mci/mci_amyloid.csv",skip=1)|>
 amyloid
 ```
 
->> This data has six variable, id, baseline, time2,4,6,8. It's mostly numerical but it shows it is character in data set. During the tidying this is changed by using mutate. The study id is renamed as id so it is easier for the table to merge.
+>> This data has six variable, id, baseline, time 2,4,6,8. It's mostly numerical but it shows it is character in data set. During the tidying this is changed by using mutate. The study id is renamed as id so it is easier for the table to merge.
 
 ```{r}
 base_amyloid<-left_join(baseline,amyloid,by="id")
