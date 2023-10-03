@@ -122,14 +122,10 @@ baseline
 >> The data set has six variabled. Current age, age at onset, sex, apoe4 gene, and id. In this data set, the important steps are to change the binary data sex and apoe 4 into chracters. And change the age of onset into numeric data so it can drop the missing value.
 
 ```{r}
-summary(baseline)
-
 baseline|>
   count(sex, apoe4)
-
-30/46
 ```
->> 483 people are recruited but only 97 developed mci. The mean baseline age is 70.26. 65.22% of the women are APOE4 carriers. 
+>> 483 people are recruited but only `count(baseline)` developed mci. The mean baseline age is 70.26. `30/40` of the women are APOE4 carriers. 
 
 ```{r}
 amyloid = read_csv(file = "./data/data_mci/mci_amyloid.csv",skip=1)|>
