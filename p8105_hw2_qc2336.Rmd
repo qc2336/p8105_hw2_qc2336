@@ -78,7 +78,8 @@ Mr_trashwheel
 Pf_trashwheel = readxl::read_excel("./data/202309 Trash Wheel Collection Data.xlsx", sheet="Professor Trash Wheel" ,range ="A2:L108")|>
   janitor::clean_names() |>
   drop_na(dumpster)|>
-  mutate(type="Pf_trashwheel")
+  mutate(type="Pf_trashwheel",
+         homes_powered=(as.numeric(weight_tons)*500/30))
 
 Pf_trashwheel
 ```
@@ -87,7 +88,8 @@ Pf_trashwheel
 Gwynnda = readxl::read_excel("./data/202309 Trash Wheel Collection Data.xlsx", sheet="Gwynnda Trash Wheel" ,range ="A2:L157")|>
   janitor::clean_names() |>
   drop_na(dumpster)|>
-  mutate(type="gwynnda")
+  mutate(type="gwynnda",
+         homes_powered=(as.numeric(weight_tons)*500/30))
 
 Gwynnda
 ```
